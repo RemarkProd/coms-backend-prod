@@ -70,8 +70,6 @@ const UploadImageService = require("./Controllers/AdminPanel/uploadImageService"
 const MrlprodBanks = require("./Controllers/AdminPanel/addMrlprodBanksService.js");
 const MrlprodBankBranches = require("./Controllers/AdminPanel/addMrlprodBankBranchesService.js");
 const MrlprodBankAccounts = require("./Controllers/AdminPanel/addMrlprodBankAccountsService.js");
-
-// middlewares api
 const GetPerMtlTransactionTypesService = require("./Controllers/AdminPanel/getPerMtlTransactionTypesService");
 const GetMtlMaterialTransactionsService = require("./Controllers/AdminPanel/getMtlMaterialTransactionsService");
 const GetPerAllPeoplesService = require("./Controllers/AdminPanel/getPerAllPeoplesService");
@@ -123,8 +121,11 @@ const GetItemPriceService = require("./Controllers/SalesOrder/getItemPriceServic
 const AddCoSellerUsers = require("./Controllers/AdminPanel/addCoSellerUsersService.js");
 const UserSignupProcess = require("./Controllers/AdminPanel/userSignupProcessService");
 const MtlCategories = require("./Controllers/AdminPanel/addMtlCategoriesService.js");
+const UserActionAssignmentService = require("./Controllers/AdminPanel/UserActionAssignmentService");
+
 const GetDrillDown = require("./Controllers/DashBoard/getDrillDown.js");
 const GetStandardBarDataView = require("./Controllers/DashBoard/getStandardBarData.js");
+const GetDivisionDistrictThana = require("./Controllers/AdminPanel/getDivisionDistrictThanaService");
 
 // middlewares api
 const AuthGuard = require("./middlewares/authGuard");
@@ -217,6 +218,8 @@ app.use("/get-menus", GetMenusService);
 app.use("/add-user-assign", AddUserAssignService);
 app.use("/updateUserMenuAssign", AuthGuard, UpdateUserMenuAssign);
 app.use("/upload-image", AuthGuard, UploadImageService);
+app.use("/user-actions", AuthGuard, UserActionAssignmentService);
+app.use("/get-bd-area-lists", GetDivisionDistrictThana);
 
 ///////////////////////// sap
 app.use("/add-po-action-history", AddPoActionHistory);
