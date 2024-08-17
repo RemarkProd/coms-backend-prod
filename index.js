@@ -129,6 +129,7 @@ const GetStandardBarDataView = require("./Controllers/DashBoard/getStandardBarDa
 const GetMtlCategoriesBService = require("./Controllers/AdminPanel/getMtlCategoriesBService");
 const AddReconsiledDataService = require("./Controllers/AdminPanel/addReconciledDataService.js");
 const GetBankReconDetailsService = require("./Controllers/AdminPanel/getBankReconIdService.js");
+const AddCustomerFromSap = require("./Controllers/SapIntegration/AddCustomerFromSap.js");
 
 //routing api for branding assets management
 const GetDivisionDistrictThana = require("./Controllers/AdminPanel/getDivisionDistrictThanaService");
@@ -136,6 +137,11 @@ const GetBrandingAssetsDetailsService = require("./Controllers/AdminPanel/getBra
 const BrandingAssetsService = require("./Controllers/BandingAssetsManagement/brandingAssetsService");
 const ShopMasterService = require("./Controllers/BandingAssetsManagement/ShopMasterService");
 const RouteMasterService = require("./Controllers/BandingAssetsManagement/routeMasterService.js");
+const RegionService = require("./Controllers/BandingAssetsManagement/regionService.js");
+const AreaService = require("./Controllers/BandingAssetsManagement/areaService.js");
+const TerritoryService = require("./Controllers/BandingAssetsManagement/territoryService.js");
+const BeatService = require("./Controllers/BandingAssetsManagement/BeatService");
+const TownService = require("./Controllers/BandingAssetsManagement/TownService");
 
 // middlewares api
 const AuthGuard = require("./middlewares/authGuard");
@@ -239,10 +245,17 @@ app.use("/get-bank_recon_details", GetBankReconDetailsService);
 app.use("/get-bd-area-lists", GetDivisionDistrictThana);
 app.use("/get-branding-assets-detail", GetBrandingAssetsDetailsService);
 app.use("/branding-assets", BrandingAssetsService);
-app.use("/shop-master", ShopMasterService);
+app.use("/shop-master", AuthGuard, ShopMasterService);
 app.use("/route-master", RouteMasterService);
+app.use("/region", AuthGuard, RegionService);
+app.use("/area", AreaService);
+app.use("/territory", TerritoryService);
+app.use("/town", TownService);
+app.use("/beat", BeatService);
 
 ///////////////////////// sap
+app.use("/add-customer-from-sap", AddCustomerFromSap);
+
 app.use("/add-po-action-history", AddPoActionHistory);
 app.use("/update-po-action-history", UpdatePoActionHistory);
 app.use("/get-po-action-history", GetPoActionHistory);
