@@ -137,6 +137,8 @@ const GetBankReconDetailsService = require("./Controllers/AdminPanel/getBankReco
 const AddCustomerFromSap = require("./Controllers/SapIntegration/AddCustomerFromSap.js");
 const ItemsFromSapService = require("./Controllers/SapIntegration/ItemsFromSapService.js");
 const CustomerSummaryList = require("./Controllers/AdminPanel/getSummaryCustomerListService.js");
+const GetTerritoryInsights = require("./Controllers/AdminPanel/getTerritoryInsights.js");
+const GetTerritoryCompetitors = require("./Controllers/AdminPanel/getTerritoryCompetitors.js");
 
 //routing api for branding assets management
 const GetDivisionDistrictThana = require("./Controllers/AdminPanel/getDivisionDistrictThanaService");
@@ -149,6 +151,17 @@ const AreaService = require("./Controllers/BandingAssetsManagement/areaService.j
 const TerritoryService = require("./Controllers/BandingAssetsManagement/territoryService.js");
 const BeatService = require("./Controllers/BandingAssetsManagement/BeatService");
 const TownService = require("./Controllers/BandingAssetsManagement/TownService");
+
+// Routing for BA Incentive Modules
+const salesTargetService = require("./Controllers/BA Incentive Module/salesTargetService");
+const inventiveFormulaService = require("./Controllers/BA Incentive Module/inventiveFormulaService");
+const incentiveTypesService = require("./Controllers/BA Incentive Module/incentiveTypesService.js");
+const incentiveConditionsService = require("./Controllers/BA Incentive Module/incentiveConditionsService.js");
+const incentiveRecipientGroupsService = require("./Controllers/BA Incentive Module/incentiveRecipientGroups.js");
+const incentiveAchievementSlabAll = require("./Controllers/BA Incentive Module/incentiveAchievementSlabAllService");
+const salesTargetsSkuAll = require("./Controllers/BA Incentive Module/salesTargetsSKUAllService.js");
+const salesDetailsAll = require("./Controllers/BA Incentive Module/salesDetailsAllService");
+const soSalesTargetIncentive = require("./Controllers/BA Incentive Module/salesTaregtIncentiveViewService.js");
 
 // middlewares api
 const AuthGuard = require("./middlewares/authGuard");
@@ -198,6 +211,17 @@ app.use("/undefined-bank-deposit", UndefinedBankDepositService);
 app.use("/ap-invoice-all", ApInvoiceAllService);
 app.use("/apInvoiceLinesAll", ApInvoiceLinesAllService);
 app.use("/arCashRecCustomerAll", ArCashRecCustomerAllervice);
+
+//routing for BA Incentive
+app.use("/salesTarget", salesTargetService);
+app.use("/inventiveFormula", inventiveFormulaService);
+app.use("/incentiveTypes", incentiveTypesService);
+app.use("/incentiveConditions", incentiveConditionsService);
+app.use("/incentiveAchievementSlabAll", incentiveAchievementSlabAll);
+app.use("/salesTargetsSkuAll", salesTargetsSkuAll);
+app.use("/salesDetailsAll", salesDetailsAll);
+app.use("/incentiveRecipientGroups", incentiveRecipientGroupsService);
+app.use("/salesTargetIncentiveView", soSalesTargetIncentive);
 
 // routing middleware for admin
 app.use("/add-hr-locations-all", AddHrLocationsAll);
@@ -254,6 +278,8 @@ app.use("/add-updatedreconciled-excel-data", AddReconsiledDataService);
 app.use("/add-updatedreconciled-excel-data", AddReconsiledDataService);
 app.use("/get-bank_recon_details", GetBankReconDetailsService);
 app.use("/customer-summary", CustomerSummaryList);
+app.use("/get-territory-insights", GetTerritoryInsights);
+app.use("/get-territory-competitors", GetTerritoryCompetitors);
 
 // routing middleware for branding assets management
 app.use("/get-bd-area-lists", GetDivisionDistrictThana);
