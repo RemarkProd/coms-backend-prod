@@ -160,8 +160,14 @@ const incentiveConditionsService = require("./Controllers/BA Incentive Module/in
 const incentiveRecipientGroupsService = require("./Controllers/BA Incentive Module/incentiveRecipientGroups.js");
 const incentiveAchievementSlabAll = require("./Controllers/BA Incentive Module/incentiveAchievementSlabAllService");
 const salesTargetsSkuAll = require("./Controllers/BA Incentive Module/salesTargetsSKUAllService.js");
+const salesAchievedTargetsSkuAll = require("./Controllers/BA Incentive Module/salesAchviedTargetsSkuAllService.js");
 const salesDetailsAll = require("./Controllers/BA Incentive Module/salesDetailsAllService");
 const soSalesTargetIncentive = require("./Controllers/BA Incentive Module/salesTaregtIncentiveViewService.js");
+const salesTargetAllDetailsService = require("./Controllers/BA Incentive Module/salesTargetAllFilterService.js");
+const salesDetailsAllDetailsService = require("./Controllers/BA Incentive Module/salesDetailsFilterService");
+const salesTargetsSKUAllDetailsService = require("./Controllers/BA Incentive Module/salesTargetsSKUAllFilterService");
+const incentiveDistributionAllService = require("./Controllers/BA Incentive Module/incentiveDistributionAllService");
+const baSalesDetailsAllService = require("./Controllers/BA Incentive Module/getSalesDataService");
 
 // middlewares api
 const AuthGuard = require("./middlewares/authGuard");
@@ -222,6 +228,12 @@ app.use("/salesTargetsSkuAll", salesTargetsSkuAll);
 app.use("/salesDetailsAll", salesDetailsAll);
 app.use("/incentiveRecipientGroups", incentiveRecipientGroupsService);
 app.use("/salesTargetIncentiveView", soSalesTargetIncentive);
+app.use("/salestargetallfilter", salesTargetAllDetailsService);
+app.use("/salesdetailsallfilter", salesDetailsAllDetailsService);
+app.use("/salestargetsskullfilter", salesTargetsSKUAllDetailsService);
+app.use("/salesAchievedTargetsSkuAll", salesAchievedTargetsSkuAll);
+app.use("/incentivedistributionall", incentiveDistributionAllService);
+app.use("/baSalesAllData", baSalesDetailsAllService);
 
 // routing middleware for admin
 app.use("/add-hr-locations-all", AddHrLocationsAll);
